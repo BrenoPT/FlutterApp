@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'components.dart';
+import 'students_page.dart';
 import 'theme.dart';
 
 void main() {
@@ -96,6 +98,39 @@ class _MyHomePageState extends State<MyHomePage> {
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
+      ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            const DrawerHeader(
+              decoration: BoxDecoration(color: Colors.blue),
+              child: Text('Menu'),
+            ),
+            ListTile(
+              leading: const Icon(Icons.pages),
+              title: const Text('Componentes'),
+              onTap: () {
+                Navigator.pop(context); // fecha o drawer
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => const ComponentsPage()),
+                );
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.person),
+              title: const Text('Alunos'),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => const StudentsPage()),
+                );
+              },
+            ),
+          ],
+        ),
       ),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
